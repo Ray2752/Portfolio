@@ -38,7 +38,7 @@ const Navbar = () => {
                     <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#about'>About me</a>
                 </li>
                 <li>
-                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#projects'>Services</a>
+                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#services'>Services</a>
                 </li>
                 <li>
                     <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#work'>My Work</a>
@@ -71,7 +71,7 @@ const Navbar = () => {
                 <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#about'>About me</a>
             </li>
             <li className='md:hidden py-2' onClick={closeMenu}>
-                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#projects'>Services</a>
+                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#services'>Services</a>
             </li>
             <li className='md:hidden py-2' onClick={closeMenu}>
                 <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#work'>My Work</a>

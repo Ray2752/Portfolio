@@ -47,6 +47,8 @@ import aws from './aws.png';
 import flutter from './flutter.png';
 import dart from './dart.png';
 import portfolio_img from './portfolio-img.png';
+import cloudservices from './cloudservices.png';
+import softwareservices from './softwareservices.png';
 
 export const assets = {
     user_image,
@@ -59,6 +61,7 @@ export const assets = {
     react,
     portfolio_img,
     typescript,
+    softwareservices,
     javascript,
     python,
     node,
@@ -67,6 +70,7 @@ export const assets = {
     dart,
     vscode,
     firebase,
+    cloudservices,
     figma,
     git,
     mongodb,
@@ -124,10 +128,10 @@ export const workData = [
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
-    { icon: assets.mobile_icon, title: 'Mobile app', description: 'Mobile app development involves creating software for mobile devices...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
+    { icon: assets.web_icon, title: 'Full-Stack Web Development', description: 'Complete web applications using React, Next.js, Node.js, and modern databases. From responsive frontends to robust backend APIs and cloud deployment.', link: '' },
+    { icon: assets.mobile_icon, title: 'Mobile App Development', description: 'Cross-platform mobile applications using Flutter and Dart. Native-like performance with beautiful user interfaces for iOS and Android platforms.', link: '' },
+    { icon: assets.softwareservices, title: 'Software Engineering', description: 'Custom software solutions using Java, C++, Python, and TypeScript. Clean architecture, scalable systems, and efficient algorithms for complex problems.', link: '' },
+    { icon: assets.cloudservices, title: 'Database & Cloud Solutions', description: 'Database design and optimization with MongoDB, SQL databases, and cloud services. AWS deployment, Firebase integration, and scalable infrastructure.', link: '' },
 ]
 
 export const infoList = [

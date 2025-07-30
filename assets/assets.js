@@ -46,6 +46,7 @@ import node from './node.png';
 import aws from './aws.png';
 import flutter from './flutter.png';
 import dart from './dart.png';
+import portfolio_img from './portfolio-img.png';
 
 export const assets = {
     user_image,
@@ -56,6 +57,7 @@ export const assets = {
     project_icon,
     project_icon_dark,
     react,
+    portfolio_img,
     typescript,
     javascript,
     python,

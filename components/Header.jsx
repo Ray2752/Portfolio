@@ -5,8 +5,8 @@ import React from 'react'
 const Header = () => {
   return (
     <div className='w-11/12 max-w-4xl text-center mx-auto min-h-screen flex flex-col items-center justify-center gap-6 pt-32 px-4'>
-        <div>
-            <Image src={assets.profilepic} alt='Profile' className='w-32 rounded-full' />
+        <div className='flex justify-center'>
+            <Image src={assets.portfolio_img} alt='Profile' className='w-32 rounded-full mx-auto' />
         </div>
         <h3 className='flex items-end gap-2 text-xl font-ovo md:text-2xl mb-3'>
             Hello, I'm Raymundo <Image src={assets.hand_icon} alt='Profile' className='w-6' />

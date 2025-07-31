@@ -5,8 +5,8 @@ import { assets } from '@/assets/assets'
 
 const Services = () => {
   return (
-    <div id='services' className='w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-8 md:py-10 scroll-mt-20 mt-8 sm:mt-12 md:mt-16 lg:mt-20 mx-auto max-w-7xl'>
-          <h4 className='text-center mb-2 text-base sm:text-lg md:text-xl font-ovo'>
+    <div id='services' className='w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-8 md:py-10 scroll-mt-20 mt-4 sm:mt-6 md:mt-8 lg:mt-12 mx-auto max-w-7xl'>
+          <h4 className='text-center mb-4 text-base sm:text-lg md:text-xl font-ovo'>
             WHAT I OFFER
         </h4>
         <h2 className='text-center mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-ovo'>

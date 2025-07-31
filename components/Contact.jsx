@@ -28,7 +28,7 @@ const Contact = () => {
     }
   };
   return (
-    <div id='contact' className='w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-8 md:py-10 scroll-mt-20 mt-8 sm:mt-12 md:mt-16 lg:mt-20 mx-auto max-w-7xl bg-[url("/footer-bg-color.png")] bg-center bg-no-repeat bg-[length:90%_auto]'>
+    <div id='contact' className='w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-8 md:py-10 scroll-mt-20 mt-8 sm:mt-12 md:mt-16 lg:mt-20 mx-auto max-w-7xl bg-[url("/footer-bg-color.png")] bg-center bg-no-repeat bg-[length:90%_auto] dark:bg-center dark:bg-no-repeat dark:bg-[length:90%_auto]'>
          <h4 className='text-center mb-2 text-base sm:text-lg md:text-xl font-ovo'>
             CONNECT WITH ME
         </h4>

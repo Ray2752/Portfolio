@@ -106,23 +106,23 @@ export const assets = {
 
 export const workData = [
     {
-        title: 'Frontend project',
-        description: 'Web Design',
+        title: 'Code Clinic',
+        description: 'Web-based IDE with multi-language support and SaaS architecture',
         bgImage: '/work-1.png',
     },
     {
-        title: 'Geo based app',
-        description: 'Mobile App',
+        title: 'Gym & Tonic',
+        description: 'AI-powered fitness platform with voice assistant and adaptive plans',
         bgImage: '/work-2.png',
     },
     {
-        title: 'Photography site',
-        description: 'Web Design',
+        title: 'ChatterBox',
+        description: 'Real-time social platform with video calling',
         bgImage: '/work-3.png',
     },
     {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
+        title: 'BookEater',
+        description: 'Cross-platform social network for book enthusiasts',
         bgImage: '/work-4.png',
     },
 ]

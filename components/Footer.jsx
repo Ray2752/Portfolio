@@ -2,19 +2,47 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='mt-16'>
-        <div className='text-center '>
-            <p className='mt-4'>© 2025 My Portfolio.</p>
-            <p className='text-sm text-gray-500 dark:text-white'>Follow me on 
-                <a href='https://www.linkedin.com/in/raymundo-pérez' target='_blank' rel='noopener noreferrer'className='text-blue-500 hover:underline'> LinkedIn</a>
-                <a href="https://www.instagram.com/ray._.perez/" target='_blank' rel='noopener noreferrer' className='text-blue-500 hover:underline'> Instagram</a>
-                <a href="https://github.com/Ray2752" target='_blank' rel='noopener noreferrer' className='text-blue-500 hover:underline'> GitHub</a>
-            </p>
+    <footer className='mt-20 py-8 border-t border-gray-200 dark:border-gray-700'>
+        <div className='max-w-6xl mx-auto px-4 sm:px-6'>
+            {/* Main footer content */}
+            <div className='text-center mb-6'>
+                <h3 className='text-lg font-semibold mb-4'>Let's Connect</h3>
+                <div className='flex flex-wrap justify-center gap-6 mb-4'>
+                    <a href='https://www.linkedin.com/in/raymundo-pérez' target='_blank' rel='noopener noreferrer' 
+                       className='text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors'>
+                        LinkedIn
+                    </a>
+                    <a href="https://www.instagram.com/ray._.perez/" target='_blank' rel='noopener noreferrer' 
+                       className='text-pink-600 hover:text-pink-800 dark:text-pink-400 dark:hover:text-pink-300 transition-colors'>
+                        Instagram
+                    </a>
+                    <a href="https://github.com/Ray2752" target='_blank' rel='noopener noreferrer' 
+                       className='text-gray-800 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 transition-colors'>
+                        GitHub
+                    </a>
+                </div>
+                <div className='mb-4'>
+                    <p className='text-sm text-gray-600 dark:text-gray-400 mb-2'>Get in touch via email</p>
+                    <a href='mailto:perez_prz_ray@hotmail.com' 
+                       className='text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors'>
+                        perez_prz_ray@hotmail.com
+                    </a>
+                </div>
+            </div>
+            
+            {/* Bottom section */}
+            <div className='border-t border-gray-200 dark:border-gray-700 pt-6 text-center'>
+                <div className='flex flex-col sm:flex-row justify-between items-center gap-4'>
+                    <p className='text-sm text-gray-600 dark:text-gray-400'>
+                        © 2025 Raymundo Pérez
+                    </p>
+                    <p className='text-sm text-gray-600 dark:text-gray-400'>
+                        Built with React.js, Next.js & Tailwind CSS
+                    </p>
+                </div>
+            </div>
         </div>
-        <div>
-            <p className='text-center text-sm mt-2'>By Raymundo Pérez</p>
-        </div>
-    </div>
+    </footer>
   )
 }
 

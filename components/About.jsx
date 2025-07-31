@@ -34,12 +34,12 @@ function About({isDarkMode}) {
                      </li>
                    ))}
                  </ul>
-                 <div className='mt-6 sm:mt-8 md:mt-10'>
+                 <div className='mt-12 sm:mt-16 md:mt-20 lg:mt-24'>
                      <h4 className='mb-3 mt-5 sm:mb-4 md:mb-5 text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 font-ovo dark:text-white text-center'>
                         🛠️ Tools I use
                      </h4>
                      <div className='overflow-hidden relative w-full max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl mx-auto py-3 sm:py-4 md:py-6'>
-                         <div className='flex items-center gap-6 animate-marquee whitespace-nowrap mt-5'>
+                         <div className='flex items-center gap-6 animate-marquee whitespace-nowrap mt-8 sm:mt-10 md:mt-12 lg:mt-14'>
                             {/* Primera serie */}
                             {toolsData.map((tool, index) => (
                               <div key={`first-${index}`} className='flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border border-gray-400 rounded-lg cursor-pointer hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-lightHover hover:shadow-black flex-shrink-0'>

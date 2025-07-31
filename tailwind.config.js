@@ -26,6 +26,7 @@ module.exports = {
 
     },
   },
+  darkMode: 'selector',
   plugins: [
     require("@midudev/tailwind-animations")
   ],

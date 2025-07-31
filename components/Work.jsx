@@ -39,7 +39,27 @@ const Work = () => {
                         <p className='text-gray-700 text-xs md:text-sm mt-1 line-clamp-2'>{project.description}</p>
                     </div>
                     <div className='ml-3 flex-shrink-0'>
-                        <Image src={assets.send_icon} alt='Send Icon' className='w-4 md:w-5 opacity-70 group-hover:opacity-100 transition-opacity' />    
+                        {project.link ? (
+                            <a 
+                                href={project.link} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className='block'
+                            >
+                                <Image 
+                                    src={assets.send_icon} 
+                                    alt='Visit Project' 
+                                    className='w-4 md:w-5 opacity-70 hover:opacity-100 transition-opacity cursor-pointer' 
+                                />
+                            </a>
+                        ) : (
+                            <Image 
+                                src={assets.send_icon} 
+                                alt='Send Icon' 
+                                className='w-4 md:w-5 opacity-70 group-hover:opacity-100 transition-opacity' 
+                            />
+                        )}
                      </div>
                     </div>
                 </div>
@@ -68,11 +88,31 @@ const Work = () => {
                 {/* Información del proyecto debajo de la imagen en móvil, overlay en desktop */}
                 <div className='block sm:hidden bg-gray-900 p-4 rounded-b-lg'>
                   <h3 className='text-white text-lg font-bold mb-2'>{selectedImage.title}</h3>
-                  <p className='text-gray-200 text-sm'>{selectedImage.description}</p>
+                  <p className='text-gray-200 text-sm mb-3'>{selectedImage.description}</p>
+                  {selectedImage.link && (
+                    <a 
+                      href={selectedImage.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className='inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors'
+                    >
+                      Visit Project <Image src={assets.send_icon} alt='Visit' className='w-4 h-4' />
+                    </a>
+                  )}
                 </div>
                 <div className='hidden sm:block absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/50 to-transparent p-4 rounded-b-lg'>
                   <h3 className='text-white text-lg md:text-xl font-bold mb-1'>{selectedImage.title}</h3>
-                  <p className='text-gray-200 text-sm md:text-base'>{selectedImage.description}</p>
+                  <p className='text-gray-200 text-sm md:text-base mb-3'>{selectedImage.description}</p>
+                  {selectedImage.link && (
+                    <a 
+                      href={selectedImage.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className='inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors'
+                    >
+                      Visit Project <Image src={assets.send_icon} alt='Visit' className='w-4 h-4' />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

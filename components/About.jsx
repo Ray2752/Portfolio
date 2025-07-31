@@ -2,7 +2,7 @@ import { assets, infoList, toolsData } from '@/assets/assets'
 import React from 'react'
 import Image from 'next/image'
 
-function About() {
+function About({isDarkMode}) {
   return (
     <div id='about' className='w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-8 md:py-10 scroll-mt-20 mt-8 sm:mt-12 md:mt-16 lg:mt-20 mx-auto max-w-7xl'>
         <h4 className='text-center mb-2 text-base sm:text-lg md:text-xl font-ovo'>
@@ -16,25 +16,26 @@ function About() {
                 <Image src={assets.user_image} alt="User" className='rounded-3xl w-full' /> 
             </div> */}
             <div className='flex-1 text-center w-full'>
-                <p className='mb-6 sm:mb-8 md:mb-10 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl font-ovo mx-auto text-sm sm:text-base md:text-lg leading-relaxed'>I am a passionate web developer with a focus on creating dynamic and responsive web applications.
+                <p className='mb-6 sm:mb-8 md:mb-10 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl font-ovo mx-auto text-sm sm:text-base md:text-lg leading-relaxed'>
+                  I am a passionate web developer with a focus on creating dynamic and responsive web applications.
                  My journey in web development began with a curiosity for how websites work, and it has evolved into a full-fledged career. I enjoy tackling 
                  complex problems and finding innovative solutions to enhance user experiences.</p>
                  <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl mx-auto'>
-                   {infoList.map(({icon, itemDark, title, description}, index) => (
-                     <li key={index} className='border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 lg:p-7 cursor-pointer hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-lightHover hover:shadow-black'>
+                   {infoList.map(({icon, iconDark, title, description}, index) => (
+                     <li key={index} className='border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 lg:p-7 cursor-pointer hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-lightHover hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50'>
                         <Image 
-                            src={icon} 
+                            src={isDarkMode ? iconDark : icon} 
                             alt={title} 
-                            className='w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 mt-2 sm:mt-3 object-contain mx-auto'
+                            className='w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 mt-2 sm:mt-3 object-contain mx-auto dark:text-white'
                             quality={95}
                         />
-                        <h3 className='my-3 sm:my-4 md:my-5 font-semibold text-gray-700 text-sm sm:text-base md:text-lg'>{title}</h3>
-                        <p className='text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed'>{description}</p>
+                        <h3 className='my-3 sm:my-4 md:my-5 font-semibold text-gray-700 text-sm sm:text-base md:text-lg dark:text-white'>{title}</h3>
+                        <p className='text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed dark:text-white/80 dark:text-white'>{description}</p>
                      </li>
                    ))}
                  </ul>
                  <div className='mt-6 sm:mt-8 md:mt-10'>
-                     <h4 className='mb-3 sm:mb-4 md:mb-5 text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 font-ovo'>
+                     <h4 className='mb-3 sm:mb-4 md:mb-5 text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 font-ovo dark:text-white text-center'>
                         🛠️ Tools I use
                      </h4>
                      <div className='overflow-hidden relative w-full max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl mx-auto py-3 sm:py-4 md:py-6'>

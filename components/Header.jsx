@@ -14,17 +14,17 @@ const Header = () => {
         <h1 className='text-3xl sm:text-6xl font-ovo lg:text-[66px]'>
             Full-Stack Web Developer based in México
         </h1>
-        <p className='max-w-2xl mx-auto font-ovo text-gray-600 leading-relaxed'>
+        <p className='mb-6 sm:mb-8 md:mb-10 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl font-ovo mx-auto text-sm sm:text-base md:text-lg leading-relaxed'>
             I am a passionate Full-Stack Web Developer with expertise in modern technologies like React, Node.js, and Python. 
             With a strong foundation in both frontend and backend development, I create dynamic, responsive web applications 
             that deliver exceptional user experiences. My experience spans from building interactive user interfaces to 
             developing robust server-side solutions and working with databases like MySQL and MongoDB.
         </p>
         <div className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
-            <a href="#contact" className='px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2 hover:bg-gray-800 hover:animate-pulse transition-colors duration-300'>
+            <a href="#contact" className='px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2 hover:bg-gray-800 hover:animate-pulse transition-colors duration-300 dark:bg-transparent'>
                 Contact Me<Image src={assets.right_arrow_white} alt='Arrow' className='w-4' />
             </a>
-            <a href="/CV_Raymundo_Perez_Portfolio.pdf" download className='px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 hover:bg-gray-100 hover:animate-bounce transition-colors duration-300'>
+            <a href="/CV_Raymundo_Perez_Portfolio.pdf" download className='px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 hover:bg-gray-100 hover:animate-bounce transition-colors duration-300 bg-white  dark:text-black'>
                 My Resume<Image src={assets.download_icon} alt='Download' className='w-4' />
             </a>
         </div>

@@ -19,7 +19,7 @@ const Work = () => {
             MY PORTFOLIO
         </h4>
         <h2 className='text-center mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-ovo'>
-            My lastest work
+            My latest work
         </h2>
         <p className='text-center mb-8 text-base sm:text-lg md:text-xl font-ovo max-w-4xl mx-auto'>
             Welcome to my portfolio! Here you'll find a collection of innovative projects that showcase my passion for creating 

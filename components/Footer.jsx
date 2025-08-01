@@ -12,9 +12,9 @@ const Footer = () => {
                        className='text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors'>
                         LinkedIn
                     </a>
-                    <a href="https://www.instagram.com/ray._.perez/" target='_blank' rel='noopener noreferrer' 
-                       className='text-pink-600 hover:text-pink-800 dark:text-pink-400 dark:hover:text-pink-300 transition-colors'>
-                        Instagram
+                    <a href='tel:+529513007412' target='_blank' rel='noopener noreferrer' 
+                       className='text-gray-800 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 transition-colors'>
+                        Phone: +52 951 300 74 12
                     </a>
                     <a href="https://github.com/Ray2752" target='_blank' rel='noopener noreferrer' 
                        className='text-gray-800 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 transition-colors'>

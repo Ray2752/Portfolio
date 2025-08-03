@@ -207,46 +207,6 @@ const Work = () => {
                         {currentImageIndex + 1} / {selectedImage.gallery.length + 1}
                       </div>
                     </div>
-                    
-                    {/* Miniaturas navegables */}
-                    <div className='mt-4 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 max-h-[20vh] overflow-y-auto'>
-                      {/* Miniatura de imagen principal */}
-                      <motion.div
-                        onClick={() => setCurrentImageIndex(0)}
-                        className={`cursor-pointer transition-all border-2 rounded-md overflow-hidden ${
-                          currentImageIndex === 0 ? 'border-blue-500' : 'border-gray-300 hover:border-gray-400'
-                        }`}
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <Image 
-                          src={selectedImage.bgImage} 
-                          alt={`${selectedImage.title} - Main`}
-                          width={100}
-                          height={200}
-                          className='w-full h-auto object-cover aspect-[1/2]'
-                        />
-                      </motion.div>
-                      
-                      {/* Miniaturas de galería */}
-                      {selectedImage.gallery.map((imageSrc, index) => (
-                        <motion.div
-                          key={index}
-                          onClick={() => setCurrentImageIndex(index + 1)}
-                          className={`cursor-pointer transition-all border-2 rounded-md overflow-hidden ${
-                            currentImageIndex === index + 1 ? 'border-blue-500' : 'border-gray-300 hover:border-gray-400'
-                          }`}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          <Image 
-                            src={imageSrc} 
-                            alt={`${selectedImage.title} - Image ${index + 2}`}
-                            width={100}
-                            height={200}
-                            className='w-full h-auto object-cover aspect-[1/2]'
-                          />
-                        </motion.div>
-                      ))}
-                    </div>
                   </div>
                 ) : (
                   /* Imagen única para otros proyectos */

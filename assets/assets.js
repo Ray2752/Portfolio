@@ -127,7 +127,8 @@ export const workData = [
         title: 'BookEater',
         description: 'Cross-platform social network for book enthusiasts',
         bgImage: '/work-4.png',
-        link: ''
+        link: '',
+        gallery: ['/work-5.png', '/work-6.png', '/work-7.png', '/work-8.png', '/work-9.png', '/work-10.png', '/work-11.png', '/work-12.png']
     },
 ]
 

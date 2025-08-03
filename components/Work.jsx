@@ -1,18 +1,63 @@
 import { assets, workData } from '@/assets/assets'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 
 const Work = () => {
   const [selectedImage, setSelectedImage] = useState(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const openModal = (project) => {
     setSelectedImage(project)
+    setCurrentImageIndex(0)
   }
 
   const closeModal = () => {
     setSelectedImage(null)
+    setCurrentImageIndex(0)
   }
+
+  const nextImage = () => {
+    if (selectedImage && selectedImage.gallery) {
+      const totalImages = selectedImage.gallery.length + 1 
+      setCurrentImageIndex((prev) => (prev + 1) % totalImages)
+    }
+  }
+
+  const prevImage = () => {
+    if (selectedImage && selectedImage.gallery) {
+      const totalImages = selectedImage.gallery.length + 1
+      setCurrentImageIndex((prev) => (prev - 1 + totalImages) % totalImages)
+    }
+  }
+
+  const getCurrentImageSrc = () => {
+    if (!selectedImage || !selectedImage.gallery) return selectedImage?.bgImage
+    if (currentImageIndex === 0) return selectedImage.bgImage
+    return selectedImage.gallery[currentImageIndex - 1]
+  }
+
+  // Navegación con teclado
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (!selectedImage) return
+      
+      if (e.key === 'Escape') {
+        closeModal()
+      } else if (selectedImage.title === 'BookEater' && selectedImage.gallery) {
+        if (e.key === 'ArrowRight') {
+          nextImage()
+        } else if (e.key === 'ArrowLeft') {
+          prevImage()
+        }
+      }
+    }
+
+    if (selectedImage) {
+      window.addEventListener('keydown', handleKeyPress)
+      return () => window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [selectedImage, currentImageIndex])
 
   return (
     <motion.div 
@@ -99,7 +144,7 @@ const Work = () => {
             ))}
         </motion.div>
 
-        {/* Modal for full image */}
+        {/* Modal para la imagen completa */}
         <AnimatePresence>
         {selectedImage && (
           <motion.div 
@@ -124,13 +169,95 @@ const Work = () => {
                 <Image src={assets.close_white} alt='Close' className='w-4 h-4' />
               </button>
               <div className='relative w-full h-auto'>
-                <Image 
-                  src={selectedImage.bgImage} 
-                  alt={selectedImage.title}
-                  width={selectedImage.title === 'BookEater' ? 400 : 1200}
-                  height={selectedImage.title === 'BookEater' ? 800 : 800}
-                  className='w-full h-auto object-contain rounded-lg max-h-[80vh] sm:max-h-[85vh]'
-                />
+                {/* Si es BookEater y tiene galería, mostrar navegación de imágenes */}
+                {selectedImage.title === 'BookEater' && selectedImage.gallery ? (
+                  <div className='relative'>
+                    {/* Imagen actual */}
+                    <div className='relative'>
+                      <Image 
+                        src={getCurrentImageSrc()} 
+                        alt={`${selectedImage.title} - Image ${currentImageIndex + 1}`}
+                        width={400}
+                        height={800}
+                        className='w-full h-auto object-contain rounded-lg max-h-[80vh] sm:max-h-[85vh]'
+                      />
+                      
+                      {/* Botón anterior */}
+                      <motion.button
+                        onClick={prevImage}
+                        className='absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all z-10'
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Image src={assets.arrow_icon} alt='Previous' className='w-4 h-4 rotate-180' />
+                      </motion.button>
+                      
+                      {/* Botón siguiente */}
+                      <motion.button
+                        onClick={nextImage}
+                        className='absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all z-10'
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Image src={assets.arrow_icon} alt='Next' className='w-4 h-4' />
+                      </motion.button>
+                      
+                      {/* Indicador de posición */}
+                      <div className='absolute bottom-4 left-1/2 -translate-x-1/2 bg-black bg-opacity-70 text-white px-3 py-1 rounded-full text-sm'>
+                        {currentImageIndex + 1} / {selectedImage.gallery.length + 1}
+                      </div>
+                    </div>
+                    
+                    {/* Miniaturas navegables */}
+                    <div className='mt-4 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 max-h-[20vh] overflow-y-auto'>
+                      {/* Miniatura de imagen principal */}
+                      <motion.div
+                        onClick={() => setCurrentImageIndex(0)}
+                        className={`cursor-pointer transition-all border-2 rounded-md overflow-hidden ${
+                          currentImageIndex === 0 ? 'border-blue-500' : 'border-gray-300 hover:border-gray-400'
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <Image 
+                          src={selectedImage.bgImage} 
+                          alt={`${selectedImage.title} - Main`}
+                          width={100}
+                          height={200}
+                          className='w-full h-auto object-cover aspect-[1/2]'
+                        />
+                      </motion.div>
+                      
+                      {/* Miniaturas de galería */}
+                      {selectedImage.gallery.map((imageSrc, index) => (
+                        <motion.div
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index + 1)}
+                          className={`cursor-pointer transition-all border-2 rounded-md overflow-hidden ${
+                            currentImageIndex === index + 1 ? 'border-blue-500' : 'border-gray-300 hover:border-gray-400'
+                          }`}
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          <Image 
+                            src={imageSrc} 
+                            alt={`${selectedImage.title} - Image ${index + 2}`}
+                            width={100}
+                            height={200}
+                            className='w-full h-auto object-cover aspect-[1/2]'
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  /* Imagen única para otros proyectos */
+                  <Image 
+                    src={selectedImage.bgImage} 
+                    alt={selectedImage.title}
+                    width={selectedImage.title === 'BookEater' ? 400 : 1200}
+                    height={selectedImage.title === 'BookEater' ? 800 : 800}
+                    className='w-full h-auto object-contain rounded-lg max-h-[80vh] sm:max-h-[85vh]'
+                  />
+                )}
                 {/* Información del proyecto debajo de la imagen en móvil, overlay en desktop */}
                 <div className='block sm:hidden bg-gray-900 p-4 rounded-b-lg'>
                   <h3 className='text-white text-lg font-bold mb-2'>{selectedImage.title}</h3>

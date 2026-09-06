@@ -6,6 +6,7 @@ import Services from "@/components/Services";
 import Work from "@/components/Work";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { useEffect, useState } from "react";
 
 
@@ -31,7 +32,7 @@ export default function Home() {
   }, [isDarkMode]);
     
   return (
-    <>
+    <LanguageProvider>
     <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
     <Header isDarkMode={isDarkMode}  />
     <About isDarkMode={isDarkMode} />
@@ -39,6 +40,6 @@ export default function Home() {
     <Work isDarkMode={isDarkMode} />
     <Contact isDarkMode={isDarkMode} />
     <Footer isDarkMode={isDarkMode} />
-    </>
+    </LanguageProvider>
   );
 }

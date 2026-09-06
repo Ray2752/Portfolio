@@ -2,13 +2,15 @@ import { assets } from '@/assets/assets'
 import React, {useState} from 'react'
 import Image from 'next/image'
 import { motion } from 'motion/react'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Contact = () => {
+    const { t } = useLanguage();
     const [result, setResult] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    setResult("Sending....");
+    setResult(t.contact.sending);
     const formData = new FormData(event.target);
 
     formData.append("access_key", "71e6f78d-a912-440e-b398-64d7fec70ee9");
@@ -21,7 +23,7 @@ const Contact = () => {
     const data = await response.json();
 
     if (data.success) {
-      setResult("Form Submitted Successfully");
+      setResult(t.contact.success);
       event.target.reset();
     } else {
       console.log("Error", data);
@@ -42,25 +44,23 @@ const Contact = () => {
          whileInView={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.5, delay: 0.3 }}
          >
-            CONNECT WITH ME
+            {t.contact.kicker}
         </motion.h4>
-        <motion.h2 
+        <motion.h2
         className='text-center mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-ovo'
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
         >
-            Get in touch
+            {t.contact.heading}
         </motion.h2>
-        <motion.p 
+        <motion.p
         className='text-center mb-8 text-base sm:text-lg md:text-xl font-ovo max-w-4xl mx-auto'
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
         >
-            Ready to bring your ideas to life? I'm always excited to discuss new projects and opportunities. 
-            Whether you need a full-stack web application, mobile solution, or just want to chat about technology, 
-            feel free to reach out. Let's create something amazing together!
+            {t.contact.paragraph}
         </motion.p>
 
         <motion.form 
@@ -76,22 +76,22 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
             >
-                <motion.input 
-                type="text" 
-                placeholder="Your Name" 
-                required 
-                className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:text-white dark:bg-darkHover' 
+                <motion.input
+                type="text"
+                placeholder={t.contact.namePlaceholder}
+                required
+                className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:text-white dark:bg-darkHover'
                 name='name'
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
                 whileFocus={{ scale: 1.02, borderColor: "#3b82f6" }}
                 />
-                <motion.input 
-                type="email" 
-                placeholder="Your Email" 
-                required 
-                className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:text-white dark:bg-darkHover' 
+                <motion.input
+                type="email"
+                placeholder={t.contact.emailPlaceholder}
+                required
+                className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:text-white dark:bg-darkHover'
                 name='email'
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -99,9 +99,9 @@ const Contact = () => {
                 whileFocus={{ scale: 1.02, borderColor: "#3b82f6" }}
                 />
             </motion.div>
-            <motion.textarea 
-            rows='6' 
-            placeholder='Your Message' 
+            <motion.textarea
+            rows='6'
+            placeholder={t.contact.messagePlaceholder}
             required
             className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6 dark:text-white dark:bg-darkHover' 
             name='message'
@@ -120,7 +120,7 @@ const Contact = () => {
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             >
-                SUBMIT NOW <Image src={assets.right_arrow_white} alt='Right Arrow' className='w-4'/>
+                {t.contact.submit} <Image src={assets.right_arrow_white} alt='Right Arrow' className='w-4'/>
             </motion.button>
             <motion.p 
             className='text-center mt-4'

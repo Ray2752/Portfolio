@@ -2,8 +2,10 @@ import { assets, workData } from '@/assets/assets'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Work = () => {
+  const { t } = useLanguage();
   const [selectedImage, setSelectedImage] = useState(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -73,25 +75,23 @@ const Work = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         >
-            MY PORTFOLIO
+            {t.work.kicker}
         </motion.h4>
-        <motion.h2 
+        <motion.h2
         className='text-center mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-ovo'
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
         >
-            My latest work
+            {t.work.heading}
         </motion.h2>
-        <motion.p 
+        <motion.p
         className='text-center mb-8 text-base sm:text-lg md:text-xl font-ovo max-w-4xl mx-auto'
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
         >
-            Welcome to my portfolio! Here you'll find a collection of innovative projects that showcase my passion for creating 
-            meaningful digital solutions. Each project represents my commitment to building exceptional user experiences 
-            with modern technologies, from full-stack web applications to AI-powered platforms and mobile solutions.
+            {t.work.paragraph}
         </motion.p>
         <motion.div 
         className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 my-10 gap-6'
@@ -114,7 +114,7 @@ const Work = () => {
                     <div className='bg-white w-11/12 rounded-md absolute bottom-4 left-1/2 -translate-x-1/2 py-3 px-4 flex items-center justify-between duration-300 group-hover:bottom-6 shadow-lg'>
                     <div className='flex-1'>
                         <h2 className='font-semibold text-gray-800 text-sm md:text-base truncate'>{project.title}</h2>
-                        <p className='text-gray-700 text-xs md:text-sm mt-1 line-clamp-2'>{project.description}</p>
+                        <p className='text-gray-700 text-xs md:text-sm mt-1 line-clamp-2'>{t.work.projects[project.id].description}</p>
                     </div>
                     <div className='ml-3 flex-shrink-0'>
                         {project.link ? (
@@ -127,7 +127,7 @@ const Work = () => {
                             >
                                 <Image 
                                     src={assets.send_icon} 
-                                    alt='Visit Project' 
+                                    alt={t.work.visitProject}
                                     className='w-4 md:w-5 opacity-70 hover:opacity-100 transition-opacity cursor-pointer' 
                                 />
                             </a>
@@ -221,7 +221,7 @@ const Work = () => {
                 {/* Información del proyecto debajo de la imagen en móvil, overlay en desktop */}
                 <div className='block sm:hidden bg-gray-900 p-4 rounded-b-lg'>
                   <h3 className='text-white text-lg font-bold mb-2'>{selectedImage.title}</h3>
-                  <p className='text-gray-200 text-sm mb-3'>{selectedImage.description}</p>
+                  <p className='text-gray-200 text-sm mb-3'>{t.work.projects[selectedImage.id].description}</p>
                   {selectedImage.link && (
                     <a 
                       href={selectedImage.link} 
@@ -229,13 +229,13 @@ const Work = () => {
                       rel="noopener noreferrer"
                       className='inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors'
                     >
-                      Visit Project <Image src={assets.send_icon} alt='Visit' className='w-4 h-4' />
+                      {t.work.visitProject} <Image src={assets.send_icon} alt='Visit' className='w-4 h-4' />
                     </a>
                   )}
                 </div>
                 <div className='hidden sm:block absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/50 to-transparent p-4 rounded-b-lg'>
                   <h3 className='text-white text-lg md:text-xl font-bold mb-1'>{selectedImage.title}</h3>
-                  <p className='text-gray-200 text-sm md:text-base mb-3'>{selectedImage.description}</p>
+                  <p className='text-gray-200 text-sm md:text-base mb-3'>{t.work.projects[selectedImage.id].description}</p>
                   {selectedImage.link && (
                     <a 
                       href={selectedImage.link} 
@@ -243,7 +243,7 @@ const Work = () => {
                       rel="noopener noreferrer"
                       className='inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors'
                     >
-                      Visit Project <Image src={assets.send_icon} alt='Visit' className='w-4 h-4' />
+                      {t.work.visitProject} <Image src={assets.send_icon} alt='Visit' className='w-4 h-4' />
                     </a>
                   )}
                 </div>

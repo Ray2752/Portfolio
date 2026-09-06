@@ -1,9 +1,11 @@
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
+    const { language, setLanguage, t } = useLanguage();
     const [isScroll, setIsScroll] = useState(false);
     const sideMenuRef = useRef();
     const openMenu = () => {
@@ -32,26 +34,33 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         <div className='flex items-center gap-8'>
             <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"} hover:bg-opacity-100 transition-all duration-500 ease-in-out hover:shadow-lg animate-scale`}>
                 <li>
-                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#top'>Home</a>
+                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#top'>{t.nav.home}</a>
                 </li>
                 <li>
-                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#about'>About me</a>
+                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#about'>{t.nav.about}</a>
                 </li>
                 <li>
-                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#services'>Services</a>
+                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#services'>{t.nav.services}</a>
                 </li>
                 <li>
-                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#work'>My Work</a>
+                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#work'>{t.nav.work}</a>
                 </li>
                 <li>
-                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#contact'>Contact me</a>
+                    <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#contact'>{t.nav.contact}</a>
                 </li>
             </ul>
             <div className='flex items-center gap-4'>
                 <button onClick={() => setIsDarkMode(prev => !prev)}>
                     <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt='Moon' className='w-7 hover:animate-pulse' />
                 </button>
-                <a href="#contact" className='hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full font-ovo hover:bg-gray-100 hover:border-gray-700 transition-all duration-300 hover:animate-scale dark:border-white/50 dark:hover:bg-gray-800 dark:hover:border-white/70 dark:hover:shadow-none'>Contact 
+                <button
+                    onClick={() => setLanguage(prev => (prev === 'en' ? 'es' : 'en'))}
+                    aria-label="Toggle language"
+                    className='font-ovo text-sm border border-gray-500 rounded-full px-3 py-1 hover:bg-gray-100 hover:border-gray-700 transition-all duration-300 hover:animate-scale dark:border-white/50 dark:hover:bg-gray-800'
+                >
+                    {language.toUpperCase()}
+                </button>
+                <a href="#contact" className='hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full font-ovo hover:bg-gray-100 hover:border-gray-700 transition-all duration-300 hover:animate-scale dark:border-white/50 dark:hover:bg-gray-800 dark:hover:border-white/70 dark:hover:shadow-none'>{t.nav.contactPill}
                     <Image src={ isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon} alt='' className='w-3' /></a>
 
                 <button className='block md:hidden ml-3' onClick={openMenu}>
@@ -65,19 +74,27 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 <Image src={ isDarkMode ? assets.close_white : assets.close_black} alt='Close' className='w-5 cursor-pointer'/>
             </div>
             <li className='md:hidden py-2' onClick={closeMenu}>
-                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#top'>Home</a>
+                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#top'>{t.nav.home}</a>
             </li>
             <li className='md:hidden py-2' onClick={closeMenu}>
-                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#about'>About me</a>
+                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#about'>{t.nav.about}</a>
             </li>
             <li className='md:hidden py-2' onClick={closeMenu}>
-                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#services'>Services</a>
+                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#services'>{t.nav.services}</a>
             </li>
             <li className='md:hidden py-2' onClick={closeMenu}>
-                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#work'>My Work</a>
+                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#work'>{t.nav.work}</a>
             </li>
             <li className='md:hidden py-2' onClick={closeMenu}>
-                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#contact'>Contact me</a>
+                <a className='font-ovo hover:text-green-600 transition-colors duration-300 hover:animate-scale' href='#contact'>{t.nav.contact}</a>
+            </li>
+            <li className='md:hidden py-2'>
+                <button
+                    onClick={() => setLanguage(prev => (prev === 'en' ? 'es' : 'en'))}
+                    className='font-ovo hover:text-green-600 transition-colors duration-300'
+                >
+                    {language === 'en' ? 'Español' : 'English'}
+                </button>
             </li>
         </ul>
     </nav>

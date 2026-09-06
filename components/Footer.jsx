@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion } from 'motion/react'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <motion.footer 
     className='mt-20 py-8 border-t border-gray-200 dark:border-gray-700'
@@ -23,7 +25,7 @@ const Footer = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.4 }}
                 >
-                    Let's Connect
+                    {t.footer.connect}
                 </motion.h3>
                 <motion.div 
                 className='flex flex-wrap justify-center gap-6 mb-4'
@@ -39,27 +41,27 @@ const Footer = () => {
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     >
-                        LinkedIn
+                        {t.footer.linkedin}
                     </motion.a>
-                    <motion.a 
-                    href='tel:+529513007412' 
-                    target='_blank' 
-                    rel='noopener noreferrer' 
+                    <motion.a
+                    href='tel:+529513007412'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='text-gray-800 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 transition-colors'
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     >
-                        Phone: +52 951 300 74 12
+                        {t.footer.phone}
                     </motion.a>
-                    <motion.a 
-                    href="https://github.com/Ray2752" 
-                    target='_blank' 
-                    rel='noopener noreferrer' 
+                    <motion.a
+                    href="https://github.com/Ray2752"
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='text-gray-800 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 transition-colors'
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     >
-                        GitHub
+                        {t.footer.github}
                     </motion.a>
                 </motion.div>
                 <motion.div 
@@ -68,7 +70,7 @@ const Footer = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                    <p className='text-sm text-gray-600 dark:text-gray-400 mb-2'>Get in touch via email</p>
+                    <p className='text-sm text-gray-600 dark:text-gray-400 mb-2'>{t.footer.emailCta}</p>
                     <motion.a 
                     href='mailto:perez_prz_ray@hotmail.com' 
                     className='text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors'
@@ -98,7 +100,7 @@ const Footer = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.9 }}
                     >
-                        © 2025 Raymundo Pérez
+                        © 2026 Raymundo Pérez
                     </motion.p>
                     <motion.p 
                     className='text-sm text-gray-600 dark:text-gray-400'
@@ -106,7 +108,7 @@ const Footer = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 1.0 }}
                     >
-                        Built with React.js, Next.js & Tailwind CSS
+                        {t.footer.builtWith}
                     </motion.p>
                 </motion.div>
             </motion.div>

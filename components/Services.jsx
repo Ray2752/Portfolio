@@ -3,8 +3,10 @@ import Image from 'next/image'
 import { serviceData } from '@/assets/assets'
 import { assets } from '@/assets/assets'
 import { motion } from 'motion/react'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Services = () => {
+  const { t } = useLanguage();
   return (
     <motion.div 
     id='services' 
@@ -19,25 +21,23 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           >
-            WHAT I OFFER
+            {t.services.kicker}
         </motion.h4>
-        <motion.h2 
+        <motion.h2
         className='text-center mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-ovo'
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
         >
-            My Services
+            {t.services.heading}
         </motion.h2>
-        <motion.p 
+        <motion.p
         className='text-center mb-8 text-base sm:text-lg md:text-xl font-ovo max-w-4xl mx-auto'
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
         >
-            I specialize in full-stack web development, creating modern and responsive applications using cutting-edge technologies. 
-            From frontend user interfaces with React and Next.js to robust backend solutions with Node.js and database management, 
-            I deliver complete digital solutions tailored to your business needs.
+            {t.services.paragraph}
         </motion.p>
         <motion.div 
         className='grid grid-cols-auto gap-6 my-10'
@@ -45,7 +45,9 @@ const Services = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
         >
-            {serviceData.map(({icon, title, description, link}, index) => (
+            {serviceData.map(({id, icon, link}, index) => {
+              const { title, description } = t.services.items[id];
+              return (
               <motion.div 
               key={index} 
               className='border border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover dark:hover:bg-lightHover/30 transition-shadow duration-500'
@@ -79,7 +81,8 @@ const Services = () => {
                 </motion.p>
                 {/* <a href={link} className='flex items-center gap-2 text-sm mt-5'>Read more <Image src={assets.right_arrow} alt='' className='w-3' /></a> */}
               </motion.div>
-            ))}
+              )
+            })}
         </motion.div>
     </motion.div>
   )

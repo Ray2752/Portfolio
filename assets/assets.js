@@ -106,26 +106,26 @@ export const assets = {
 
 export const workData = [
     {
+        id: 'codeClinic',
         title: 'Code Clinic',
-        description: 'Web-based IDE with multi-language support and SaaS architecture',
         bgImage: '/work-1.png',
         link: 'https://code-clinic-iota.vercel.app/'
     },
     {
+        id: 'gymTonic',
         title: 'Gym & Tonic',
-        description: 'AI-powered fitness platform with voice assistant and adaptive plans',
         bgImage: '/work-2.png',
         link: 'https://natalia-ai.vercel.app/'
     },
     {
+        id: 'chatterBox',
         title: 'ChatterBox',
-        description: 'Real-time social platform with video calling',
         bgImage: '/work-3.png',
         link: 'https://chatterbox-g0qo.onrender.com'
     },
     {
+        id: 'bookEater',
         title: 'BookEater',
-        description: 'Cross-platform social network for book enthusiasts',
         bgImage: '/work-4.png',
         link: '',
         gallery: ['/work-5.png', '/work-6.png', '/work-7.png', '/work-8.png', '/work-9.png', '/work-10.png', '/work-11.png', '/work-12.png']
@@ -133,16 +133,16 @@ export const workData = [
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Full-Stack Web Development', description: 'Complete web applications using React, Next.js, Node.js, and modern databases. From responsive frontends to robust backend APIs and cloud deployment.', link: '' },
-    { icon: assets.mobile_icon, title: 'Mobile App Development', description: 'Cross-platform mobile applications using Flutter and Dart. Native-like performance with beautiful user interfaces for iOS and Android platforms.', link: '' },
-    { icon: assets.softwareservices, title: 'Software Engineering', description: 'Custom software solutions using Java, C++, Python, and TypeScript. Clean architecture, scalable systems, and efficient algorithms for complex problems.', link: '' },
-    { icon: assets.cloudservices, title: 'Database & Cloud Solutions', description: 'Database design and optimization with MongoDB, SQL databases, and cloud services. AWS deployment, Firebase integration, and scalable infrastructure.', link: '' },
+    { id: 'webDev', icon: assets.web_icon, link: '' },
+    { id: 'mobileDev', icon: assets.mobile_icon, link: '' },
+    { id: 'softwareEng', icon: assets.softwareservices, link: '' },
+    { id: 'cloudDb', icon: assets.cloudservices, link: '' },
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Java, C++, JavaScript, TypeScript, Python, HTML/CSS, SQL, VBA, Dart' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Bachelor of Science in Software Engineering' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Code Clinic, Gym & Tonic, BookEater, ChatterBox, MAIA' }
+    { id: 'languages', icon: assets.code_icon, iconDark: assets.code_icon_dark },
+    { id: 'education', icon: assets.edu_icon, iconDark: assets.edu_icon_dark },
+    { id: 'projects', icon: assets.project_icon, iconDark: assets.project_icon_dark }
 ];
 
 export const toolsData = [

@@ -1,9 +1,11 @@
 import { assets, infoList, toolsData } from '@/assets/assets'
 import React from 'react'
 import Image from 'next/image'
-import { motion } from 'motion/react'  
+import { motion } from 'motion/react'
+import { useLanguage } from '@/context/LanguageContext'
 
 function About({isDarkMode}) {
+  const { t } = useLanguage();
   return (
     <motion.div id='about' className='w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-8 md:py-10 scroll-mt-20 mt-8 sm:mt-12 md:mt-16 lg:mt-20 mx-auto max-w-7xl'
     initial={{ opacity: 0 }}  
@@ -15,14 +17,14 @@ function About({isDarkMode}) {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         className='text-center mb-2 text-base sm:text-lg md:text-xl font-ovo'>
-            Introduction
+            {t.about.intro}
         </motion.h4>
-        <motion.h2 
-        initial={{ opacity: 0, y: -20 }}  
+        <motion.h2
+        initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
         className='text-center mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-ovo'>
-            About Me
+            {t.about.heading}
         </motion.h2>
         <motion.div 
         initial={{ opacity: 0, }}  
@@ -35,26 +37,24 @@ function About({isDarkMode}) {
             transition={{ duration: 0.6, delay: 0.8 }}
             className='flex-1 text-center w-full'>
                 <p className='mb-6 sm:mb-8 md:mb-10 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl font-ovo mx-auto text-sm sm:text-base md:text-lg leading-relaxed'>
-                  I am a passionate web developer with a focus on creating dynamic and responsive web applications.
-                 My journey in web development began with a curiosity for how websites work, and it has evolved into a full-fledged career. I enjoy tackling 
-                 complex problems and finding innovative solutions to enhance user experiences.</p>
+                  {t.about.paragraph}</p>
                  <motion.ul 
                  initial={{ opacity: 0 }}  
                  whileInView={{ opacity: 1 }}
                  transition={{ duration: 0.8, delay: 1.0 }}
                  className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl mx-auto'>
-                   {infoList.map(({icon, iconDark, title, description}, index) => (
-                     <motion.li 
+                   {infoList.map(({id, icon, iconDark}, index) => (
+                     <motion.li
                      whileInView={{ scale: 1.05 }}
                      key={index} className='border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 lg:p-7 cursor-pointer hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-lightHover hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50'>
-                        <Image 
-                            src={isDarkMode ? iconDark : icon} 
-                            alt={title} 
+                        <Image
+                            src={isDarkMode ? iconDark : icon}
+                            alt={t.about.infoList[id].title}
                             className='w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 mt-2 sm:mt-3 object-contain mx-auto dark:text-white'
                             quality={95}
                         />
-                        <h3 className='my-3 sm:my-4 md:my-5 font-semibold text-gray-700 text-sm sm:text-base md:text-lg dark:text-white'>{title}</h3>
-                        <p className='text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed dark:text-white/80 dark:text-white'>{description}</p>
+                        <h3 className='my-3 sm:my-4 md:my-5 font-semibold text-gray-700 text-sm sm:text-base md:text-lg dark:text-white'>{t.about.infoList[id].title}</h3>
+                        <p className='text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed dark:text-white/80 dark:text-white'>{t.about.infoList[id].description}</p>
                      </motion.li>
                    ))}
                  </motion.ul>
@@ -64,7 +64,7 @@ function About({isDarkMode}) {
                      whileInView={{ y: 0, opacity: 1 }}
                      transition={{ duration: 1.3, delay: 0.5 }}
                      className='mb-3 mt-5 sm:mb-4 md:mb-5 text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 font-ovo dark:text-white text-center'>
-                        🛠️ Tools I use
+                        {t.about.toolsHeading}
                      </motion.h4>
                      <motion.div 
                      initial={{ opacity: 0, y: 30 }}
